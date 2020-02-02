@@ -14,7 +14,7 @@ public class Course1 {
 		Long finish2 = System.currentTimeMillis();
 		System.out.println("The memo algorithm takes: " + (finish2-start2) + "ms");
 		*/
-		System.out.println(fibTabular(3));
+		System.out.println(fibTabular(30));
 	}
 	
 	/**
@@ -33,14 +33,25 @@ public class Course1 {
 		Long[] memo = new Long[n+1];
 		return fibMemo(n, memo);
 	}
-	
+
+	/**
+	 * Helper function for fibMemo
+	 * @param n
+	 * @param memo
+	 * @return
+	 */
 	private static Long fibMemo(int n, Long[] memo) {
 		if(n < 3) return Long.valueOf(1);
 		if(memo[n] != null) return memo[n];
 		memo[n] = fibMemo(n-1, memo) + fibMemo(n-2, memo);
 		return memo[n];
 	}
-	
+
+	/**
+	 * Tabular DP solution of Fibonacci
+	 * @param n
+	 * @return
+	 */
 	public static int fibTabular(int n) {
 		int[] tab = new int[n+1];
 		tab[1] = 1; tab[2] = 1; 
@@ -49,7 +60,45 @@ public class Course1 {
 		}
 		return tab[n];
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
 	
 }
- 
+
+class Example {
+	public static void main(String[]args){
+		System.out.println(tabFib(6));
+	}
+
+	static int tabFib(int n) {
+		if(n<1){return -1;}
+		int[] tab = new int[n+1];
+		tab[1] =1;tab[2]=1;
+		for(int i=3; i<n+1;i++) {
+			tab[i] = tab[i-1] +tab[i-2];
+		}
+		return tab[n];
+	}
+}
